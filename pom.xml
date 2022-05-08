@@ -6,11 +6,12 @@
     <modules>
         <module>service</module>
         <module>service/service_edu</module>
+        <module>common</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.7</version>
+        <version>2.6.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -58,15 +59,15 @@
             <!-- swagger -->
             <dependency>
                 <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
+                <artifactId>springfox-boot-starter</artifactId>
                 <version>3.0.0</version>
             </dependency>
             <!-- swagger ui -->
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>3.0.0</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>io.springfox</groupId>-->
+<!--                <artifactId>springfox-swagger-ui</artifactId>-->
+<!--                <version>3.0.0</version>-->
+<!--            </dependency>-->
             <!-- aliyunOSS -->
 <!--            <dependency>-->
 <!--                <groupId>com.aliyun.oss</groupId>-->
