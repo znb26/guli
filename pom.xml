@@ -7,6 +7,7 @@
         <module>service</module>
         <module>service/service_edu</module>
         <module>common</module>
+        <module>common/common_utils</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -28,20 +29,19 @@
     <dependencyManagement>
         <dependencies>
             <!--spring cloud-->
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.cloud</groupId>-->
-<!--                <artifactId>spring-cloud-dependencies</artifactId>-->
-<!--                <version>Hoxton.RELEASE</version>-->
-<!--                <type>pom</type>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.cloud</groupId>-->
-<!--                <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
-<!--                <version></version>-->
-<!--                <type>pom</type>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>0.9.0.RELEASE</version>
+                <type>pom</type>
+            </dependency>
 
             <!--  mybatis-plus 持久层  -->
             <dependency>
@@ -62,12 +62,6 @@
                 <artifactId>springfox-boot-starter</artifactId>
                 <version>3.0.0</version>
             </dependency>
-            <!-- swagger ui -->
-<!--            <dependency>-->
-<!--                <groupId>io.springfox</groupId>-->
-<!--                <artifactId>springfox-swagger-ui</artifactId>-->
-<!--                <version>3.0.0</version>-->
-<!--            </dependency>-->
             <!-- aliyunOSS -->
 <!--            <dependency>-->
 <!--                <groupId>com.aliyun.oss</groupId>-->
@@ -78,7 +72,7 @@
             <dependency>
                 <groupId>joda-time</groupId>
                 <artifactId>joda-time</artifactId>
-                <version>2.10.14</version>
+                <version>2.10.12</version>
             </dependency>
             <!-- xls -->
             <dependency>

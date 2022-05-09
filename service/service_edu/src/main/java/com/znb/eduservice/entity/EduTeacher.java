@@ -1,8 +1,12 @@
 package com.znb.eduservice.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -45,10 +49,12 @@ public class EduTeacher implements Serializable {
     private Integer isDeleted;
 
     @ApiModelProperty("创建时间")
-    private LocalDateTime gmtCreate;
+    @TableField(fill = FieldFill.INSERT)
+    private Date gmtCreate;
 
     @ApiModelProperty("更新时间")
-    private LocalDateTime gmtModified;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date gmtModified;
 
     public String getId() {
         return id;
@@ -106,18 +112,20 @@ public class EduTeacher implements Serializable {
     public void setIsDeleted(Integer isDeleted) {
         this.isDeleted = isDeleted;
     }
-    public LocalDateTime getGmtCreate() {
+
+    public Date getGmtCreate() {
         return gmtCreate;
     }
 
-    public void setGmtCreate(LocalDateTime gmtCreate) {
+    public void setGmtCreate(Date gmtCreate) {
         this.gmtCreate = gmtCreate;
     }
-    public LocalDateTime getGmtModified() {
+
+    public Date getGmtModified() {
         return gmtModified;
     }
 
-    public void setGmtModified(LocalDateTime gmtModified) {
+    public void setGmtModified(Date gmtModified) {
         this.gmtModified = gmtModified;
     }
 
