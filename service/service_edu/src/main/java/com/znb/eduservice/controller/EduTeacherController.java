@@ -7,6 +7,7 @@ import com.znb.commonutils.R;
 import com.znb.eduservice.entity.EduTeacher;
 import com.znb.eduservice.entity.vo.TeacherQuery;
 import com.znb.eduservice.service.IEduTeacherService;
+import com.znb.servicebase.exceptionhandler.GuliException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -113,7 +114,12 @@ public class EduTeacherController {
     @ApiOperation(value = "根据id查询")
     @GetMapping("/getTeacher/{id}")
     public R getTeacher(@PathVariable String id){
-        int i = 10 / 0;
+        try {
+            int i = 10 / 0;
+        }catch (Exception e){
+            // 执行自定义异常
+            throw new GuliException(20001,"自定义异常");
+        }
         EduTeacher byId = service.getById(id);
         return R.ok().data("teacher",byId);
     }

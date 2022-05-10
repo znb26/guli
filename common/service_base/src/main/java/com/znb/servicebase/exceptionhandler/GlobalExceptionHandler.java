@@ -36,4 +36,17 @@ public class GlobalExceptionHandler {
         e.printStackTrace();
         return R.error().message("ArithmeticException");
     }
+
+    /**
+     * 自定义异常处理类
+     * @param e
+     * @return
+     */
+    @ExceptionHandler({GuliException.class})
+    @ResponseBody
+    public R error(GuliException e){
+        log.error(e.getMessage());
+        e.printStackTrace();
+        return R.error().code(e.getCode()).message(e.getMsg());
+    }
 }
