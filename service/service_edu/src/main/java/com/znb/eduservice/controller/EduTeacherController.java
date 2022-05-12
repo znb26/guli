@@ -30,6 +30,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/eduservice/teacher")
 @Api("讲师管理")
+@CrossOrigin
 public class EduTeacherController {
 
     @Autowired
@@ -94,7 +95,9 @@ public class EduTeacherController {
         if (!StringUtils.isEmpty(end)) {
             wrapper.le("gmt_modified",end);
         }
-
+        //排序
+        wrapper.orderByDesc("gmt_create");
+        //调用方法实现分页查询
         service.page(page,wrapper);
         long total = page.getTotal();
         List<EduTeacher> records = page.getRecords();
@@ -114,12 +117,12 @@ public class EduTeacherController {
     @ApiOperation(value = "根据id查询")
     @GetMapping("/getTeacher/{id}")
     public R getTeacher(@PathVariable String id){
-        try {
-            int i = 10 / 0;
-        }catch (Exception e){
-            // 执行自定义异常
-            throw new GuliException(20001,"自定义异常");
-        }
+//        try {
+//            int i = 10 / 0;
+//        }catch (Exception e){
+//            // 执行自定义异常
+//            throw new GuliException(20001,"自定义异常");
+//        }
         EduTeacher byId = service.getById(id);
         return R.ok().data("teacher",byId);
     }
