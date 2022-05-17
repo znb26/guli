@@ -18,7 +18,7 @@ public class OssController {
     private OssService ossService;
 
     //上传头像的方法
-    @PostMapping(value = "/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ApiOperation(value = "上传图片", notes = "上传图片", httpMethod = "POST")
     public R uploadOssFile(@ApiParam(value = "讲师图片", required = true) @RequestPart("file") MultipartFile file) {
         //获取上传文件  MultipartFile
