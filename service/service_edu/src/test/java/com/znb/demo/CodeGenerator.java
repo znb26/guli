@@ -25,7 +25,7 @@ public class CodeGenerator {
                             .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "E:\\大三\\项目\\guli_test\\service\\service_edu\\src\\main\\resources"));// 设置mapperXml生成路径
                 })
                 .strategyConfig(builder -> {
-                    builder.addInclude("edu_subject"); // 设置需要生成的表名
+                    builder.addInclude("edu_course","edu_course_description","edu_video","edu_chapter"); // 设置需要生成的表名
 
                 })
                 .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板

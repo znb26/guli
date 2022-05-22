@@ -1,0 +1,21 @@
+package com.znb.eduservice.service;
+
+import com.znb.eduservice.entity.EduCourse;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.znb.eduservice.entity.vo.CourseInfoVo;
+
+/**
+ * <p>
+ * 课程 服务类
+ * </p>
+ *
+ * @author znb
+ * @since 2022-05-17
+ */
+public interface IEduCourseService extends IService<EduCourse> {
+
+    /**
+     * 添加课程基本信息
+     */
+    String saveCourseInfo(CourseInfoVo courseInfoVo);
+}
