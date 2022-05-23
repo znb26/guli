@@ -35,4 +35,23 @@ public class EduCourseController {
         return R.ok().data("courseId",id);
     }
 
+    /**
+     *  根据课程id查询课程基本信息的接口
+     */
+    @GetMapping("/getCourseInfo/{courseId}")
+    public R getCourseInfo(@PathVariable String courseId) {
+        CourseInfoVo courseInfoVo = courseService.getCourseInfo(courseId);
+        return R.ok().data("courseInfoVo",courseInfoVo);
+    }
+
+
+    /**
+     * 修改课程信息的接口
+     */
+    @PostMapping("/updateCourseInfo")
+    public R updateCourseInfo(@RequestBody CourseInfoVo courseInfoVo) {
+        courseService.updateCourseInfo(courseInfoVo);
+        return R.ok();
+    }
+
 }

@@ -18,4 +18,11 @@ public interface IEduCourseService extends IService<EduCourse> {
      * 添加课程基本信息
      */
     String saveCourseInfo(CourseInfoVo courseInfoVo);
+
+    CourseInfoVo getCourseInfo(String courseId);
+
+    /**
+     * 修改课程信息的接口
+     */
+    void updateCourseInfo(CourseInfoVo courseInfoVo);
 }
