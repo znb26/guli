@@ -1,10 +1,15 @@
 package com.znb.eduservice.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 /**
  * <p>
@@ -16,6 +21,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @TableName("edu_chapter")
 @ApiModel(value = "EduChapter对象", description = "课程")
+@Data
 public class EduChapter implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -33,63 +39,11 @@ public class EduChapter implements Serializable {
     private Integer sort;
 
     @ApiModelProperty("创建时间")
-    private LocalDateTime gmtCreate;
+    @TableField(fill = FieldFill.INSERT)
+    private Date gmtCreate;
 
     @ApiModelProperty("更新时间")
-    private LocalDateTime gmtModified;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date gmtModified;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-    public String getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
-    }
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public Integer getSort() {
-        return sort;
-    }
-
-    public void setSort(Integer sort) {
-        this.sort = sort;
-    }
-    public LocalDateTime getGmtCreate() {
-        return gmtCreate;
-    }
-
-    public void setGmtCreate(LocalDateTime gmtCreate) {
-        this.gmtCreate = gmtCreate;
-    }
-    public LocalDateTime getGmtModified() {
-        return gmtModified;
-    }
-
-    public void setGmtModified(LocalDateTime gmtModified) {
-        this.gmtModified = gmtModified;
-    }
-
-    @Override
-    public String toString() {
-        return "EduChapter{" +
-            "id=" + id +
-            ", courseId=" + courseId +
-            ", title=" + title +
-            ", sort=" + sort +
-            ", gmtCreate=" + gmtCreate +
-            ", gmtModified=" + gmtModified +
-        "}";
-    }
 }

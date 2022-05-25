@@ -3,6 +3,7 @@ package com.znb.eduservice.controller;
 
 import com.znb.commonutils.R;
 import com.znb.eduservice.entity.vo.CourseInfoVo;
+import com.znb.eduservice.entity.vo.CoursePublishVo;
 import com.znb.eduservice.service.IEduCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -54,4 +55,12 @@ public class EduCourseController {
         return R.ok();
     }
 
+    /**
+     * 根据课程id查询课程确认信息
+     */
+    @GetMapping("/getPublishCourseInfo/{id}")
+    public R getPublishCourseInfo(@PathVariable String id){
+        CoursePublishVo coursePublishVo = courseService.publishCourseInfo(id);
+        return R.ok().data("publishCourse",coursePublishVo);
+    }
 }

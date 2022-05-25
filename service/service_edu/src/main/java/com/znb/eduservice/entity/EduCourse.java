@@ -74,25 +74,4 @@ public class EduCourse implements Serializable {
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date gmtModified;
 
-
-    @Override
-    public String toString() {
-        return "EduCourse{" +
-            "id=" + id +
-            ", teacherId=" + teacherId +
-            ", subjectId=" + subjectId +
-            ", subjectParentId=" + subjectParentId +
-            ", title=" + title +
-            ", price=" + price +
-            ", lessonNum=" + lessonNum +
-            ", cover=" + cover +
-            ", buyCount=" + buyCount +
-            ", viewCount=" + viewCount +
-            ", version=" + version +
-            ", status=" + status +
-            ", isDeleted=" + isDeleted +
-            ", gmtCreate=" + gmtCreate +
-            ", gmtModified=" + gmtModified +
-        "}";
-    }
 }

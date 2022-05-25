@@ -9,6 +9,7 @@ import com.znb.eduservice.mapper.EduChapterMapper;
 import com.znb.eduservice.service.IEduChapterService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.znb.eduservice.service.IEduVideoService;
+import com.znb.servicebase.exceptionhandler.GuliException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ import java.util.List;
 public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChapter> implements IEduChapterService {
 
     @Autowired
-    private IEduVideoService eduVideoService;
+    private IEduVideoService videoService;
 
     /**
      * 课程大纲列表,根据课程id查询
@@ -42,7 +43,7 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
         // 根据课程id查询课程里的所有小节
         QueryWrapper<EduVideo> wrapperVideo = new QueryWrapper<>();
         wrapperVideo.eq("course_id",courseId);
-        List<EduVideo> eduVideoList = eduVideoService.list(wrapperVideo);
+        List<EduVideo> eduVideoList = videoService.list(wrapperVideo);
 
         //创建list集合用于最终返回的数据
         List<ChapterVo> finalList = new ArrayList<>();
@@ -71,5 +72,24 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
             chapterVo.setChildren(videoList);
         }
         return finalList;
+    }
+
+    /**
+     * 删除章节
+     */
+    @Override
+    public boolean deleteChapter(String chapterId) {
+        // 根据chapterId 去查询章节中是否存在小节内容 如果存在则不能删除
+        QueryWrapper<EduVideo> wrapper = new QueryWrapper<>();
+        wrapper.eq("chapter_id",chapterId);
+        long count = videoService.count(wrapper);
+        if (count > 0) {
+            // 不删除
+            throw new GuliException(20001,"不能删除");
+        }else {
+            // 删除
+            int i = baseMapper.deleteById(chapterId);
+            return i > 0;
+        }
     }
 }

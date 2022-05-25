@@ -3,6 +3,7 @@ package com.znb.eduservice.service.impl;
 import com.znb.eduservice.entity.EduCourse;
 import com.znb.eduservice.entity.EduCourseDescription;
 import com.znb.eduservice.entity.vo.CourseInfoVo;
+import com.znb.eduservice.entity.vo.CoursePublishVo;
 import com.znb.eduservice.mapper.EduCourseMapper;
 import com.znb.eduservice.service.IEduCourseService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -88,5 +89,14 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         description.setId(courseInfoVo.getId());
         description.setDescription(courseInfoVo.getDescription());
         courseDescriptionService.updateById(description);
+    }
+
+    /**
+     * 根据课程id查询课程确认信息
+     */
+    @Override
+    public CoursePublishVo publishCourseInfo(String id) {
+        CoursePublishVo publishCourseInfo = baseMapper.getPublishCourseInfo(id);
+        return publishCourseInfo;
     }
 }

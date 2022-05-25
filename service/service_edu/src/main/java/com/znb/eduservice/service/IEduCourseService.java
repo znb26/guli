@@ -3,6 +3,7 @@ package com.znb.eduservice.service;
 import com.znb.eduservice.entity.EduCourse;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.znb.eduservice.entity.vo.CourseInfoVo;
+import com.znb.eduservice.entity.vo.CoursePublishVo;
 
 /**
  * <p>
@@ -25,4 +26,9 @@ public interface IEduCourseService extends IService<EduCourse> {
      * 修改课程信息的接口
      */
     void updateCourseInfo(CourseInfoVo courseInfoVo);
+
+    /**
+     * 根据课程id查询课程确认信息
+     */
+    CoursePublishVo publishCourseInfo(String id);
 }
