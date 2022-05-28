@@ -1,7 +1,11 @@
 package com.znb.vod.controller;
 
+import com.aliyuncs.DefaultAcsClient;
+import com.aliyuncs.vod.model.v20170321.DeleteVideoRequest;
 import com.znb.commonutils.R;
+import com.znb.servicebase.exceptionhandler.GuliException;
 import com.znb.vod.service.VodService;
+import com.znb.vod.utlis.InitVodClient;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +32,28 @@ public class VodController {
         String videoId = vodService.uploadAlyiVideo(file);
         return R.ok().data("videoId",videoId);
     }
+
+    /**
+     * 根据视频id删除视频
+     */
+    @DeleteMapping("/removeAlyVideo/{id}")
+    public R removeAlyVideo(@PathVariable String id) {
+        try {
+            // 初始化对象
+            String accessKeyId = "LTAI5tFzFPbw9GHBxzaJq2d5";
+            String accessKeySecret = "W4uROGLA2pzEjSokWi3kRTT8ODKmLr";
+            DefaultAcsClient client = InitVodClient.initVodClient(accessKeyId,accessKeySecret);
+            // 创建删除视频的request对象
+            DeleteVideoRequest request = new DeleteVideoRequest();
+            // 向request中设置id
+            request.setVideoIds(id);
+            // 调用初始化对象的方法实现删除
+            client.getAcsResponse(request);
+            return R.ok();
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new GuliException(20001,"删除视频失败");
+        }
+    }
+
 }
