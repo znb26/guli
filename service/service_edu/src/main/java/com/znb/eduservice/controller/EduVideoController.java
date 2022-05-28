@@ -2,12 +2,12 @@ package com.znb.eduservice.controller;
 
 
 import com.znb.commonutils.R;
+import com.znb.eduservice.client.VodClient;
 import com.znb.eduservice.entity.EduVideo;
 import com.znb.eduservice.service.IEduVideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.stereotype.Controller;
 
 /**
  * <p>
@@ -25,6 +25,14 @@ public class EduVideoController {
     @Autowired
     private IEduVideoService videoService;
 
+    /**
+     * 注入接口
+     * @param eduVideo
+     * @return
+     */
+    @Autowired
+    private VodClient vodClient;
+
     // 添加小节
     @PostMapping("/addVideo")
     public R addVideo(@RequestBody EduVideo eduVideo) {
@@ -35,6 +43,13 @@ public class EduVideoController {
     @DeleteMapping("{id}")
     public R deleteVideo(@PathVariable String id) {
         // 待完善
+        // 根据小节id获取视频id
+        EduVideo eduVideo = videoService.getById(id);
+        String videoSourceId = eduVideo.getVideoSourceId();
+        if (videoSourceId != null) {
+            // 远程调用实现视频删除
+            vodClient.removeAlyVideo(videoSourceId);
+        }
         boolean b = videoService.removeById(id);
         return R.ok();
     }
