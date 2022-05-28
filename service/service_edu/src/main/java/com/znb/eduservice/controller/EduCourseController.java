@@ -2,6 +2,7 @@ package com.znb.eduservice.controller;
 
 
 import com.znb.commonutils.R;
+import com.znb.eduservice.entity.EduCourse;
 import com.znb.eduservice.entity.vo.CourseInfoVo;
 import com.znb.eduservice.entity.vo.CoursePublishVo;
 import com.znb.eduservice.service.IEduCourseService;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
+
+import java.util.List;
 
 /**
  * <p>
@@ -25,6 +28,28 @@ public class EduCourseController {
 
     @Autowired
     private IEduCourseService courseService;
+
+    /**
+     * TODO 条件查询带分页
+     * @return
+     */
+    @GetMapping()
+    public R getCourseList(){
+        List<EduCourse> list = courseService.list(null);
+        return R.ok().data("list",list);
+    }
+
+
+    /**
+     * 删除课程
+     * @param courseId 课程id
+     * @return
+     */
+    @DeleteMapping("{courseId}")
+    public R deleteCourse(@PathVariable String courseId) {
+        courseService.removeCourse(courseId);
+        return R.ok();
+    }
 
     /**
      * 添加课程基本信息
@@ -63,4 +88,19 @@ public class EduCourseController {
         CoursePublishVo coursePublishVo = courseService.publishCourseInfo(id);
         return R.ok().data("publishCourse",coursePublishVo);
     }
+
+    /**
+     * 课程最终发布 ，修改课程状态
+     * @param id
+     * @return
+     */
+    @PostMapping("/publishCourse/{id}")
+    public R publishCourse(@PathVariable String id) {
+        EduCourse eduCourse = new EduCourse();
+        eduCourse.setId(id);
+        eduCourse.setStatus("Normal");
+        courseService.updateById(eduCourse);
+        return R.ok();
+    }
+
 }
