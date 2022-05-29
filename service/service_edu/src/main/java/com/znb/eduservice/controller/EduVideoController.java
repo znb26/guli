@@ -5,6 +5,7 @@ import com.znb.commonutils.R;
 import com.znb.eduservice.client.VodClient;
 import com.znb.eduservice.entity.EduVideo;
 import com.znb.eduservice.service.IEduVideoService;
+import com.znb.servicebase.exceptionhandler.GuliException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,6 +37,7 @@ public class EduVideoController {
     // 添加小节
     @PostMapping("/addVideo")
     public R addVideo(@RequestBody EduVideo eduVideo) {
+        System.out.println(eduVideo);
         boolean save = videoService.save(eduVideo);
         return R.ok();
     }
@@ -48,7 +50,11 @@ public class EduVideoController {
         String videoSourceId = eduVideo.getVideoSourceId();
         if (videoSourceId != null) {
             // 远程调用实现视频删除
-            vodClient.removeAlyVideo(videoSourceId);
+            R result = vodClient.removeAlyVideo(videoSourceId);
+            if (result.getCode() == 20001) {
+                System.out.println("1111111");
+                throw new GuliException(20001,"删除视频失败,熔断器");
+            }
         }
         boolean b = videoService.removeById(id);
         return R.ok();
@@ -60,6 +66,7 @@ public class EduVideoController {
         videoService.updateById(eduVideo);
         return R.ok();
     }
+
     // 根据id查询小节
     @GetMapping("/getVideoById/{id}")
     public R getVideoById(@PathVariable String id) {

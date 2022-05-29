@@ -9,7 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.znb"})
-@EnableDiscoveryClient
 @EnableFeignClients
 public class EduApplication {
     public static void main(String[] args) {
