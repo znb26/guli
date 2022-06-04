@@ -2,6 +2,8 @@ package com.znb.vod.controller;
 
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.vod.model.v20170321.DeleteVideoRequest;
+import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthRequest;
+import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthResponse;
 import com.znb.commonutils.R;
 import com.znb.servicebase.exceptionhandler.GuliException;
 import com.znb.vod.service.VodService;
@@ -67,6 +69,28 @@ public class VodController {
         System.out.println(videoIdList);
         vodService.removeMoreAlyVideo(videoIdList);
         return R.ok();
+    }
+
+    /**
+     * 根据视频id获取视频播放凭证
+     */
+    @GetMapping("/getPlayAuth/{id}")
+    public R getPlayAuth(@PathVariable String id) {
+        try {
+            // 创建初始化对象
+            DefaultAcsClient client = InitVodClient.initVodClient("LTAI5tFzFPbw9GHBxzaJq2d5", "W4uROGLA2pzEjSokWi3kRTT8ODKmLr");
+            // 创建request 和 response对象
+            GetVideoPlayAuthRequest request = new GetVideoPlayAuthRequest();
+            // 向request中设置视频id
+            request.setVideoId(id);
+            // 调用方法得到凭证
+            GetVideoPlayAuthResponse response = client.getAcsResponse(request);
+            String playAuth = response.getPlayAuth();
+            return R.ok().data("playAuth",playAuth);
+        }catch (Exception e) {
+            throw new GuliException(20001,"获取视频播放凭证失败");
+        }
+
     }
 
 }
