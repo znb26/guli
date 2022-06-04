@@ -36,6 +36,7 @@ public class UcenterMemberController {
     public R loginUser(@RequestBody UcenterMember member){
         // 调用方法实现登录 返回 token值
         String token = memberService.login(member);
+        System.out.println("token:" + token);
         return R.ok().data("token",token);
     }
 
