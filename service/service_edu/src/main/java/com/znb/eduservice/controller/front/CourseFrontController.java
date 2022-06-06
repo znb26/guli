@@ -3,12 +3,15 @@ package com.znb.eduservice.controller.front;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.znb.commonutils.R;
+import com.znb.commonutils.ordervo.CourseWebVoOrder;
 import com.znb.eduservice.entity.EduCourse;
 import com.znb.eduservice.entity.chapter.ChapterVo;
 import com.znb.eduservice.entity.frontvo.CourseFrontVo;
 import com.znb.eduservice.entity.frontvo.CourseWebVo;
+import com.znb.eduservice.entity.vo.CourseInfoVo;
 import com.znb.eduservice.service.IEduChapterService;
 import com.znb.eduservice.service.IEduCourseService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,6 +54,19 @@ public class CourseFrontController {
         List<ChapterVo> chapterVideoList = chapterService.getChapterVideoByCourseId(courseId);
 
         return R.ok().data("courseWebVo",courseWebVo).data("chapterVideoList",chapterVideoList);
+    }
+
+    /**
+     * 根据课程id查询课程信息
+     * @param id
+     * @return
+     */
+    @PostMapping("/getCourseInfoOrder/{id}")
+    public CourseWebVoOrder getCourseInfoOrder(@PathVariable("id") String id){
+        CourseInfoVo courseInfo = courseService.getCourseInfo(id);
+        CourseWebVoOrder courseWebVoOrder = new CourseWebVoOrder();
+        BeanUtils.copyProperties(courseInfo,courseWebVoOrder);
+        return courseWebVoOrder;
     }
 }
 

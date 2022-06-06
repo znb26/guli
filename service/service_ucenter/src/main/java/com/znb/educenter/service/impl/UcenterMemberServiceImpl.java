@@ -4,13 +4,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.znb.commonutils.JwtUtils;
 import com.znb.commonutils.MD5;
 import com.znb.educenter.entity.UcenterMember;
+import com.znb.commonutils.CommentUserVo;
 import com.znb.educenter.entity.vo.RegisterVo;
 import com.znb.educenter.mapper.UcenterMemberMapper;
 import com.znb.educenter.service.IUcenterMemberService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.znb.servicebase.exceptionhandler.GuliException;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -128,5 +128,13 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
         wrapper.eq("openid",openid);
         UcenterMember ucenterMember = baseMapper.selectOne(wrapper);
         return ucenterMember;
+    }
+
+    /**
+     * 根据用户id获取用户信息
+     */
+    @Override
+    public CommentUserVo getCommentUserInfo(String memberId) {
+        return baseMapper.getCommentUserInfo(memberId);
     }
 }

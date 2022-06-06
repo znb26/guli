@@ -2,6 +2,7 @@ package com.znb.educenter.mapper;
 
 import com.znb.educenter.entity.UcenterMember;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.znb.commonutils.CommentUserVo;
 
 /**
  * <p>
@@ -13,4 +14,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface UcenterMemberMapper extends BaseMapper<UcenterMember> {
 
+    /**
+     * 根据用户id获取用户信息
+     */
+    CommentUserVo getCommentUserInfo(String memberId);
 }

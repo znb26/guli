@@ -2,4 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.znb.educenter.mapper.UcenterMemberMapper">
 
+    <!--CommentUserVo getCommentUserInfo(String memberId);-->
+    <select id="getCommentUserInfo" resultType="com.znb.commonutils.CommentUserVo">
+        select id, nickname, avatar from ucenter_member where id = #{id}
+    </select>
 </mapper>

@@ -2,6 +2,7 @@ package com.znb.educenter.service;
 
 import com.znb.educenter.entity.UcenterMember;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.znb.commonutils.CommentUserVo;
 import com.znb.educenter.entity.vo.RegisterVo;
 
 /**
@@ -30,4 +31,9 @@ public interface IUcenterMemberService extends IService<UcenterMember> {
      * @return
      */
     UcenterMember getOpenIdMember(String openid);
+
+    /**
+     * 根据用户id获取用户信息
+     */
+    CommentUserVo getCommentUserInfo(String memberId);
 }

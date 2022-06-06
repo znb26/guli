@@ -3,13 +3,14 @@ package com.znb.educenter.controller;
 
 import com.znb.commonutils.JwtUtils;
 import com.znb.commonutils.R;
+import com.znb.commonutils.ordervo.UcenterMemberOrder;
 import com.znb.educenter.entity.UcenterMember;
+import com.znb.commonutils.CommentUserVo;
 import com.znb.educenter.entity.vo.RegisterVo;
 import com.znb.educenter.service.IUcenterMemberService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -61,5 +62,24 @@ public class UcenterMemberController {
         // 查询数据库根据用户id获取用户信息
         UcenterMember member = memberService.getById(memberId);
         return R.ok().data("userInfo",member);
+    }
+
+    /**
+     * 根据用户id获取用户信息
+     */
+    @PostMapping("/getUcenter/{id}")
+    public CommentUserVo getUcenter(@PathVariable("memberId") String memberId) {
+        return memberService.getCommentUserInfo(memberId);
+    }
+
+    /**
+     * 根据用户id获取用户信息 订单
+     */
+    @PostMapping("/getUserInfoOrder/{id}")
+    public UcenterMemberOrder getUserInfoOrder(@PathVariable("id") String id) {
+        UcenterMember member = memberService.getById(id);
+        UcenterMemberOrder memberOrder = new UcenterMemberOrder();
+        BeanUtils.copyProperties(member,memberOrder);
+        return memberOrder;
     }
 }

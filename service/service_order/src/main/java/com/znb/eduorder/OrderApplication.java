@@ -1,18 +1,22 @@
-package com.znb.educenter;
+package com.znb.eduorder;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
+/**
+ * 远程调用
+ */
 @EnableDiscoveryClient
-@ComponentScan(basePackages = {"com.znb"})
-@MapperScan("com.znb.educenter.mapper")
-public class UcenterApplication {
-
+@EnableFeignClients
+@SpringBootApplication
+@ComponentScan("com.znb")
+@MapperScan("com.znb.eduorder.mapper")
+public class OrderApplication {
     public static void main(String[] args) {
-        SpringApplication.run(UcenterApplication.class,args);
+        SpringApplication.run(OrderApplication.class,args);
     }
 }
