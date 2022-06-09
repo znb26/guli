@@ -1,11 +1,13 @@
 package com.znb.eduorder.controller;
 
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.znb.commonutils.R;
+import com.znb.eduorder.service.ITPayLogService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.Map;
+
 
 /**
  * <p>
@@ -16,8 +18,42 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2022-06-05
  */
 @RestController
-@RequestMapping("/eduorder/t-pay-log")
+@RequestMapping("/eduorder/paylog")
 @CrossOrigin
 public class TPayLogController {
+
+    @Autowired
+    private ITPayLogService payLogService;
+
+    /**
+     * 生成微信支付二维码接口
+     * @param orderNo
+     * @return
+     */
+    @GetMapping("/createNative/{orderNo}")
+    public R createNative(@PathVariable String orderNo) {
+        // 返回相关信息
+        Map map = payLogService.createNative(orderNo);
+        return R.ok().data(map);
+    }
+
+    /**
+     * 查询订单支付状态
+     */
+    @GetMapping("/queryPayStatus/{orderNo}")
+    public R queryPayStatus(@PathVariable String orderNo){
+        Map<String,String> map = payLogService.queryPayStatus(orderNo);
+        if (map == null) {
+            return R.error().message("支付出错了");
+        }
+        // 如果不为空
+        if (map.get("trade_state").equals("SUCCESS")) {
+            // 添加支付记录
+            payLogService.updateOrdersStatus(map);
+            return R.ok();
+        }
+
+        return R.ok().code(25000).message("支付中");
+    }
 
 }

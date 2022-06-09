@@ -1,7 +1,6 @@
 package com.znb.eduorder.client;
 
 import com.znb.commonutils.ordervo.UcenterMemberOrder;
-import org.springframework.beans.BeanUtils;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;

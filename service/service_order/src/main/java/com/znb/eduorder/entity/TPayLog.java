@@ -31,7 +31,7 @@ public class TPayLog implements Serializable {
     private String orderNo;
 
     @ApiModelProperty("支付完成时间")
-    private LocalDateTime payTime;
+    private Date payTime;
 
     @ApiModelProperty("支付金额（分）")
     private BigDecimal totalFee;
