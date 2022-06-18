@@ -36,4 +36,9 @@ public interface IUcenterMemberService extends IService<UcenterMember> {
      * 根据用户id获取用户信息
      */
     CommentUserVo getCommentUserInfo(String memberId);
+
+    /**
+     * 查询某一天的注册人数
+     */
+    Integer countRegisterDay(String day);
 }

@@ -137,4 +137,12 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
     public CommentUserVo getCommentUserInfo(String memberId) {
         return baseMapper.getCommentUserInfo(memberId);
     }
+
+    /**
+     * 查询某一天的注册人数
+     */
+    @Override
+    public Integer countRegisterDay(String day) {
+        return baseMapper.countRegisterDay(day);
+    }
 }

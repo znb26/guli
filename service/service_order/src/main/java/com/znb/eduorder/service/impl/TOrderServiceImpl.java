@@ -57,9 +57,10 @@ public class TOrderServiceImpl extends ServiceImpl<TOrderMapper, TOrder> impleme
         // 课程价格
         order.setTotalFee(courseInfoOrder.getPrice());
         // 用户id
+        System.out.println(memberId);
         order.setMemberId(memberId);
         // 用户手机号
-        order.setMemberId(userInfoOrder.getMobile());
+        order.setMobile(userInfoOrder.getMobile());
         // 用户昵称
         order.setNickname(userInfoOrder.getNickname());
         // 支付状态
