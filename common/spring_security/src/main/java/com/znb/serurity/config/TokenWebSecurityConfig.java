@@ -1,6 +1,5 @@
 package com.znb.serurity.config;
 
-
 import com.znb.serurity.filter.TokenAuthenticationFilter;
 import com.znb.serurity.filter.TokenLoginFilter;
 import com.znb.serurity.security.DefaultPasswordEncoder;
@@ -80,10 +79,8 @@ public class TokenWebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     public void configure(WebSecurity web) throws Exception {
-//        web.ignoring().antMatchers("/api/**",
-//                "/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**"
-//               );
-        web.ignoring().antMatchers("/*/**"
-        );
+        web.ignoring().antMatchers("/api/**",
+                "/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**"
+               );
     }
 }

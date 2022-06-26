@@ -1,6 +1,5 @@
 package com.znb.serurity.security;
 
-
 import com.znb.commonutils.MD5;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;

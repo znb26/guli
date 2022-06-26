@@ -1,6 +1,5 @@
 package com.znb.serurity.security;
 
-
 import com.znb.commonutils.R;
 import com.znb.commonutils.ResponseUtil;
 import org.springframework.security.core.AuthenticationException;
