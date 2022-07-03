@@ -14,6 +14,6 @@ public interface UcenterClient {
      * 查询某一天的注册人数
      */
     @GetMapping("/educenter/member/countRegister/{day}")
-    public R countRegister(@PathVariable("day") String day);
+    R countRegister(@PathVariable("day") String day);
 
 }
