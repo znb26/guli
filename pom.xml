@@ -145,18 +145,6 @@
                 <artifactId>json</artifactId>
                 <version>20170516</version>
             </dependency>
-
-
-<!--            <dependency>-->
-<!--                <groupId>commons-dbutils</groupId>-->
-<!--                <artifactId>commons-dbutils</artifactId>-->
-<!--                <version>${commons-dbutils.version}</version>-->
-<!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.otter</groupId>-->
-<!--                <artifactId>canal.client</artifactId>-->
-<!--                <version>${canal.client.version}</version>-->
-<!--            </dependency>-->
         </dependencies>
     </dependencyManagement>
 
