@@ -40,15 +40,4 @@ public class EduCourseDescription implements Serializable {
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date gmtModified;
 
-
-
-    @Override
-    public String toString() {
-        return "EduCourseDescription{" +
-            "id=" + id +
-            ", description=" + description +
-            ", gmtCreate=" + gmtCreate +
-            ", gmtModified=" + gmtModified +
-        "}";
-    }
 }

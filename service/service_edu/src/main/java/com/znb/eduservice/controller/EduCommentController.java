@@ -9,17 +9,17 @@ import com.znb.commonutils.R;
 import com.znb.eduservice.client.UcenterClient;
 import com.znb.eduservice.entity.EduComment;
 import com.znb.eduservice.service.IEduCommentService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.util.StringUtils;
 import javax.servlet.http.HttpServletRequest;
-import org.springframework.stereotype.Controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static org.bouncycastle.asn1.x500.style.RFC4519Style.member;
 
 /**
  * <p>
@@ -31,6 +31,7 @@ import static org.bouncycastle.asn1.x500.style.RFC4519Style.member;
  */
 @Controller
 @RequestMapping("/eduservice/comment")
+@Api(value = "课程章节小节信息", tags = "课程章节小节信息")
 public class EduCommentController {
     /**
      * TODO 完成评论功能
@@ -52,6 +53,7 @@ public class EduCommentController {
     /**
      * 分根据课程id查询评论列表
      */
+    @ApiOperation(value = "分根据课程id查询评论列表")
     @GetMapping("/getCommentPage/{current}/{limit}")
     public R getCommentPage(@PathVariable long current,
                            @PathVariable long limit,
@@ -78,6 +80,7 @@ public class EduCommentController {
     /**
      * 添加评论
      */
+    @ApiOperation(value = "添加评论")
     @PostMapping("/addComment")
     public R addCommon(@RequestBody EduComment eduComment, HttpServletRequest request) {
         //根据token获取用户信息

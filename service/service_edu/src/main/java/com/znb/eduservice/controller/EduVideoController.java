@@ -6,6 +6,7 @@ import com.znb.eduservice.client.VodClient;
 import com.znb.eduservice.entity.EduVideo;
 import com.znb.eduservice.service.IEduVideoService;
 import com.znb.servicebase.exceptionhandler.GuliException;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/eduservice/video")
+@Api(value = "课程小节信息", tags = "课程小节信息")
 //@CrossOrigin
 public class EduVideoController {
 

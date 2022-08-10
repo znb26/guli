@@ -1,10 +1,12 @@
 package com.znb.eduservice.controller;
 
 import com.znb.commonutils.R;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/eduservice/user")
+@Api(value = "登录接口", tags = "登录接口")
 //@CrossOrigin
 public class EduLoginController {
     //记得加注解 @CrossOrigin

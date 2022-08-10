@@ -6,6 +6,8 @@ import com.znb.eduservice.entity.EduCourse;
 import com.znb.eduservice.entity.vo.CourseInfoVo;
 import com.znb.eduservice.entity.vo.CoursePublishVo;
 import com.znb.eduservice.service.IEduCourseService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +25,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/eduservice/course")
+@Api(value = "课程管理", tags = "课程管理")
 //@CrossOrigin
 public class EduCourseController {
 
@@ -45,6 +48,7 @@ public class EduCourseController {
      * @param courseId 课程id
      * @return
      */
+    @ApiOperation(value = "删除课程")
     @DeleteMapping("{courseId}")
     public R deleteCourse(@PathVariable String courseId) {
         courseService.removeCourse(courseId);
@@ -54,6 +58,7 @@ public class EduCourseController {
     /**
      * 添加课程基本信息
      */
+    @ApiOperation(value = "添加课程基本信息")
     @PostMapping("/addCourseInfo")
     public R addCourseInfo(@RequestBody CourseInfoVo courseInfoVo){
         // 需要返回添加的课程id为了后面添加大纲使用
@@ -64,6 +69,7 @@ public class EduCourseController {
     /**
      *  根据课程id查询课程基本信息的接口
      */
+    @ApiOperation(value = "根据课程id查询课程基本信息的接口")
     @GetMapping("/getCourseInfo/{courseId}")
     public R getCourseInfo(@PathVariable String courseId) {
         CourseInfoVo courseInfoVo = courseService.getCourseInfo(courseId);
@@ -74,6 +80,7 @@ public class EduCourseController {
     /**
      * 修改课程信息的接口
      */
+    @ApiOperation(value = "修改课程信息的接口")
     @PostMapping("/updateCourseInfo")
     public R updateCourseInfo(@RequestBody CourseInfoVo courseInfoVo) {
         courseService.updateCourseInfo(courseInfoVo);
@@ -83,6 +90,7 @@ public class EduCourseController {
     /**
      * 根据课程id查询课程确认信息
      */
+    @ApiOperation(value = "根据课程id查询课程确认信息")
     @GetMapping("/getPublishCourseInfo/{id}")
     public R getPublishCourseInfo(@PathVariable String id){
         CoursePublishVo coursePublishVo = courseService.publishCourseInfo(id);
@@ -94,6 +102,7 @@ public class EduCourseController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "课程最终发布 ，修改课程状态")
     @PostMapping("/publishCourse/{id}")
     public R publishCourse(@PathVariable String id) {
         EduCourse eduCourse = new EduCourse();

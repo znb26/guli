@@ -4,11 +4,10 @@ package com.znb.eduservice.controller;
 import com.znb.commonutils.R;
 import com.znb.eduservice.entity.subject.OneSubject;
 import com.znb.eduservice.service.IEduSubjectService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -23,6 +22,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/eduservice/subject")
+@Api(value = "课程分类管理信息", tags = "课程分类管理信息")
 //@CrossOrigin
 public class EduSubjectController {
 

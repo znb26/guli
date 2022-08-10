@@ -9,6 +9,7 @@ import java.util.Date;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 /**
  * <p>
@@ -20,6 +21,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @TableName("edu_subject")
 @ApiModel(value = "EduSubject对象", description = "课程科目")
+@Data
 public class EduSubject implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,56 +46,4 @@ public class EduSubject implements Serializable {
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date gmtModified;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public String getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
-    }
-    public Integer getSort() {
-        return sort;
-    }
-
-    public Date getGmtCreate() {
-        return gmtCreate;
-    }
-
-    public void setGmtCreate(Date gmtCreate) {
-        this.gmtCreate = gmtCreate;
-    }
-
-    public Date getGmtModified() {
-        return gmtModified;
-    }
-
-    public void setGmtModified(Date gmtModified) {
-        this.gmtModified = gmtModified;
-    }
-
-    @Override
-    public String toString() {
-        return "EduSubject{" +
-            "id=" + id +
-            ", title=" + title +
-            ", parentId=" + parentId +
-            ", sort=" + sort +
-            ", gmtCreate=" + gmtCreate +
-            ", gmtModified=" + gmtModified +
-        "}";
-    }
 }
