@@ -5,10 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>service</module>
-        <module>service/service_edu</module>
         <module>common</module>
-        <module>common/common_utils</module>
-        <module>service/service_oss</module>
         <module>infrastructure</module>
     </modules>
     <parent>
@@ -148,11 +145,33 @@
         </dependencies>
     </dependencyManagement>
 
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+
+    <!--                <plugin>-->
+    <!--                    <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                    <artifactId>maven-compiler-plugin</artifactId>-->
+    <!--                    <version>3.7.0</version>-->
+    <!--                </plugin>-->
+
+
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
