@@ -33,8 +33,8 @@ public class VodServiceImpl implements VodService {
         // 上传之后显示的名称
         String title = fileName.substring(0,fileName.lastIndexOf("."));
 
-        String accessKeyId = "LTAI5tFzFPbw9GHBxzaJq2d5";
-        String accessKeySecret = "W4uROGLA2pzEjSokWi3kRTT8ODKmLr";
+        String accessKeyId = "";
+        String accessKeySecret = "";
         // 上传文件输入流
         InputStream inputStream = null;
         try {
