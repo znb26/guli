@@ -67,8 +67,8 @@ public class VodServiceImpl implements VodService {
     public void removeMoreAlyVideo(List<String> videoIdList) {
         try {
             // 初始化对象
-            String accessKeyId = "LTAI5tFzFPbw9GHBxzaJq2d5";
-            String accessKeySecret = "W4uROGLA2pzEjSokWi3kRTT8ODKmLr";
+            String accessKeyId = "";
+            String accessKeySecret = "";
             DefaultAcsClient client = InitVodClient.initVodClient(accessKeyId,accessKeySecret);
             // 创建删除视频的request对象
             DeleteVideoRequest request = new DeleteVideoRequest();
