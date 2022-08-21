@@ -18,7 +18,7 @@ public class MsmServiceImpl implements MsmService {
         if (StringUtils.isEmpty(phone)) {
             return false;
         }
-        com.aliyun.dysmsapi20170525.Client client = createClient("LTAI5tFzFPbw9GHBxzaJq2d5", "W4uROGLA2pzEjSokWi3kRTT8ODKmLr");
+        com.aliyun.dysmsapi20170525.Client client = createClient("", "");
         SendSmsRequest sendSmsRequest = new SendSmsRequest()
                 .setSignName("阿里云短信测试")
                 .setTemplateCode("SMS_154950909")
