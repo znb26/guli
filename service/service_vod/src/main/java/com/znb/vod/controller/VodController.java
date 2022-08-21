@@ -44,8 +44,8 @@ public class VodController {
     public R removeAlyVideo(@PathVariable String id) {
         try {
             // 初始化对象
-            String accessKeyId = "LTAI5tFzFPbw9GHBxzaJq2d5";
-            String accessKeySecret = "W4uROGLA2pzEjSokWi3kRTT8ODKmLr";
+            String accessKeyId = "";
+            String accessKeySecret = "";
             DefaultAcsClient client = InitVodClient.initVodClient(accessKeyId,accessKeySecret);
             // 创建删除视频的request对象
             DeleteVideoRequest request = new DeleteVideoRequest();
@@ -78,7 +78,7 @@ public class VodController {
     public R getPlayAuth(@PathVariable String id) {
         try {
             // 创建初始化对象
-            DefaultAcsClient client = InitVodClient.initVodClient("LTAI5tFzFPbw9GHBxzaJq2d5", "W4uROGLA2pzEjSokWi3kRTT8ODKmLr");
+            DefaultAcsClient client = InitVodClient.initVodClient("", "");
             // 创建request 和 response对象
             GetVideoPlayAuthRequest request = new GetVideoPlayAuthRequest();
             // 向request中设置视频id
