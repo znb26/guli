@@ -25,9 +25,9 @@ public class TestVod {
         // 任何上传方式文件名必须包含扩展名
         String fileName = "F:\\其他视频\\myvideo.mp4";
 
-        String accessKeyId = "LTAI5tFzFPbw9GHBxzaJq2d5";
+        String accessKeyId = "";
 
-        String accessKeySecret = "W4uROGLA2pzEjSokWi3kRTT8ODKmLr";
+        String accessKeySecret = "";
 
         // 本地文件上传
         testUploadVideo(accessKeyId, accessKeySecret, title, fileName);
@@ -66,7 +66,7 @@ public class TestVod {
     public static void getPlayAuth() throws ClientException {
         // 1. 根据视频id获取视频播放凭证
         // 创建初始化对象
-        DefaultAcsClient client = InitObject.initVodClient("LTAI5tFzFPbw9GHBxzaJq2d5", "W4uROGLA2pzEjSokWi3kRTT8ODKmLr");
+        DefaultAcsClient client = InitObject.initVodClient("", "");
         // 创建获取视频凭证的 request 和 response
         GetVideoPlayAuthRequest request = new GetVideoPlayAuthRequest();
         GetVideoPlayAuthResponse response = new GetVideoPlayAuthResponse();
@@ -84,7 +84,7 @@ public class TestVod {
     public static void getPlayUrl() throws ClientException {
         // 1.
         // 创建初始化对象
-        DefaultAcsClient client = InitObject.initVodClient("LTAI5tFzFPbw9GHBxzaJq2d5", "W4uROGLA2pzEjSokWi3kRTT8ODKmLr");
+        DefaultAcsClient client = InitObject.initVodClient("", "");
         // 创建获取视频地址的 request 和 response
         GetPlayInfoRequest request = new GetPlayInfoRequest();
         GetPlayInfoResponse response = new GetPlayInfoResponse();
